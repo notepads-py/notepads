@@ -5,7 +5,7 @@ path_absolute: pathlib.Path = pathlib.Path(__file__).parent.absolute()
 
 setup(
     name='notepads',
-    version='5.7.7',
+    version='5.7.8',
     description=' ㅤ ',
     long_description=pathlib.Path(f"{path_absolute}/README.md").read_text(encoding="utf-8"),
     long_description_content_type='text/markdown',
@@ -27,8 +27,7 @@ setup(
     ],
     keywords='notes, notepad, notepads, np, nps',
     project_urls={
-        'Source Code': 'https://github.com/notepads-py/notepads',
-        'Issues': 'https://github.com/notepads-py/notepads/issues',
+        'Source': 'https://github.com/notepads-py',
         'Download': 'https://pypi.org/project/notepads/',
     },
     include_package_data=True,
