@@ -27,7 +27,7 @@ def main():
         'email': __email__,
         'status': __status__,
     }
-    for key, value in jsonr_table.items():
+    for key, value in notepads_table.items():
         print(f'{key}: {value}')
 
 if __name__ == '__main__':
