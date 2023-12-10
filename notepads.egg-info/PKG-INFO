@@ -1,13 +1,12 @@
 Metadata-Version: 2.1
 Name: notepads
-Version: 5.7.7
+Version: 5.7.8
 Summary:  ㅤ 
 Home-page: https://github.com/notepads-py
 Author: notepads
 Author-email: notepads.py@gmail.com
 License: MIT
-Project-URL: Source Code, https://github.com/notepads-py/notepads
-Project-URL: Issues, https://github.com/notepads-py/notepads/issues
+Project-URL: Source, https://github.com/notepads-py
 Project-URL: Download, https://pypi.org/project/notepads/
 Keywords: notes,notepad,notepads,np,nps
 Classifier: Development Status :: 1 - Planning
@@ -34,7 +33,7 @@ License-File: AUTHORS
 [![Python Versions](https://img.shields.io/badge/python-3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20|%203.12%20-blue)](https://www.python.org/downloads/)
 
 ```
-notepads: V5.7.7
+notepads: V5.7.8
 ```
 
 ## Installing
