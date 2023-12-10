@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: notepads
-Version: 5.7.5
-Summary: Create runtime folders, files, and code notes. All stored in notepads environment.
+Version: 5.7.7
+Summary:  ㅤ 
 Home-page: https://github.com/notepads-py
 Author: notepads
 Author-email: notepads.py@gmail.com
@@ -34,7 +34,7 @@ License-File: AUTHORS
 [![Python Versions](https://img.shields.io/badge/python-3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20|%203.12%20-blue)](https://www.python.org/downloads/)
 
 ```
-notepads: V5.7.5
+notepads: V5.7.7
 ```
 
 ## Installing
