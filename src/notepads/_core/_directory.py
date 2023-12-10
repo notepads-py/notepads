@@ -26,6 +26,7 @@ class NotepadsDirectory(object):
         directory_layout = f'Directory["{self.path}"]\n'
 
         sorted_folders = sorted(self.folders, key=lambda x: x[0])
+        sorted_files = []
         for folder in sorted_folders:
             directory_layout += f'  {folder_icon}  {folder[0]}\n'
             sorted_files = sorted(folder[1].files, key=lambda x: x[0])
