@@ -48,72 +48,97 @@ Directory["/notepads/"]
 
 ========================================
 
-# Note interaction:
+
+# Usage  <h6>100ms | (Average)</h6>
 ```python
-notepads.note(name='notename', content='notecontent', author='OPTIONAL_noteauthor')
+import notepads
 
-# Find note
+notepads.note \
+    (name="introduction",
+     
+    content="""Create runtime only directory 
+    [1] -> Make folders 
+    [2] -> Make files 
+    [3] -> Make notes for code""",
+     
+    author = "'notepads.py' Team")
 
-notepads.get_note(name='notename')
+print(notepads.get_note('introduction').content)
 
-# or
+"""
+Lets create a file `nps.txt` and a folder `examples` in the directory.
+"""
 
-notepads.notes()[<index>]
-```
-========================================
+notepads.folder \
+    (name="examples",
+    description="Examples of using notepads.",
+    version="0.1.0",
+    author="'notepads.py' Team")
 
-# Folder interaction:
-```python
-notepads.folder(name='foldername', version='OPTIONAL_0.0.0', description='OPTIONAL_a test folder', author='OPTIONAL_test author'))
+notepads.file \
+    (name="nps.txt",
+    description="This is a file.",
+    version="0.1.0",
+    author="'notepads.py' Team")
 
-# name, *, version=None, description=None, author=None
+print(notepads.directory) # notepads.dir | notepads.source | notepads.src
+
+"""
+Output:
+
+Directory["/notepads/"]
+  🗀  examples
+  🗎  nps.txt
+"""
+
+"""
+Lets add a file `test.py` to the `examples` folder.
+"""
+
+notepads.file \
+    (name="test.py",
+    parent='examples')
+
+print(notepads.directory) # notepads.dir | notepads.source | notepads.src
+
+"""
+Output:
+
+Directory["/notepads/"]
+  🗀  examples
+   ↳ 🗎  test.py
+  🗎  nps.txt
+"""
+
+"""
+Now lets write to some files!
+"""
+
+nps_file = notepads.get('nps.txt')
+test_file = notepads.get('examples').get('test.py')
+
+nps_file.write("Hello, World!")
+test_file.write("print('Hello, World!')")
+
+print(nps_file.read())
+print(test_file.read())
+
+"""
+nps.txt:
+
+Hello, World!
+
+test.py:
+print('Hello, World!')
+"""
+
+nps_file.wipe()
+
+print(nps_file.read())
+
+"""
+Output:
 
 
-# Find folder:
-
-notepads.get(name='foldername')
-
-
-# Update folder:
-
-folder.update(name='newfoldername', version='0.0.1', description='a new test folder', author='test author')
-
-
-# Delete folder:
-
-folder.delete()
-```
-
-========================================
-
-# File interaction:
-```python
-notepads.file(name='filename', description='OPTIONAL_a test file', author='OPTIONAL_test author', parent='OPTIONAL_folder name')
-
-# name, *, version=None, description=None, author=None, parent: NotepadsFolder=None
-
-
-# Find file:
-
-notepads.get(name='filename')
-
-
-# Update file:
-
-file.update(name='newfilename', description='a new test file', author='test author)
-
-
-# Load file:
-
-file.load()
-
-
-# Write file:
-
-file.write(content='newfilecontent')
-
-
-# Delete file:
-
-file.delete()
+"""
 ```
