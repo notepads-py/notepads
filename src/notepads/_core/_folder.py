@@ -1,5 +1,5 @@
 class NotepadsFolder(object):
-    def __init__(self, name, *, version=None, description=None, author=None):
+    def __init__(self, name, *, version=None, description=None, author=None, **kwargs):
         self.name: str = name
         self.version: str = version
         self.description: str = description
@@ -7,6 +7,10 @@ class NotepadsFolder(object):
         self.files: dict = {}
         self.directory: object = None
         self.path = f'/notepads/{self.name}/'
+
+        for key, value in kwargs.items():
+            try: setattr(self, key, value)
+            except: pass
 
     def __repr__(self):
         return f'Folder["{self.path}"](name={self.name}, version={self.version}, description={self.description}, author={self.author}, len_files={len(self.files)})'
@@ -36,7 +40,7 @@ class NotepadsFolder(object):
 
         except: pass
 
-    def update(self, *, name=None, version=None, description=None, author=None):
+    def update(self, *, name=None, version=None, description=None, author=None, **kwargs):
         if name:
             self.name = name
         if version:
@@ -46,11 +50,15 @@ class NotepadsFolder(object):
         if author:
             self.author = author
 
-    def update_file(self, name, *, version=None, description=None, author=None):
+        for key, value in kwargs.items():
+            try: setattr(self, key, value)
+            except: pass
+
+    def update_file(self, name, *, version=None, description=None, author=None, **kwargs):
         try:
             for child in self.files:
                 if child == name:
-                    self.files[child].update(name=name, version=version, description=description, author=author)
+                    self.files[child].update(name=name, version=version, description=description, author=author, **kwargs)
                     return child
 
         except:
@@ -91,8 +99,8 @@ class NotepadsFolder(object):
     def delete_file(self, name):
         try:
             for child in self.files:
-                if child == name:
-                    self.files[child].delete()
+                if child[0] == name:
+                    self.files[child][1].delete()
                     return self
 
             return 'Unknown File'
