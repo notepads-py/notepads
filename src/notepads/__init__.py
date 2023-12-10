@@ -1,6 +1,6 @@
 '''
 ```
-notepads: V5.7.3
+notepads: V5.7.4
 ```
 
 ## Installing
@@ -315,7 +315,7 @@ __all__ = [
     'isascii',
     'istitle',
 ]
-__version__ = '5.7.3'
+__version__ = '5.7.4'
 __author__ = 'notepads'
 __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2023 notepads'
@@ -327,6 +327,6 @@ __python_version__ = '3.7'
 __name__ = 'notepads'
 __description__ = 'Create runtime folders, files, and code notes. All stored in notepads environment.'
 __desc__ = __description__
-__github__ = 'https://github.com/py-notepads'
-__repo__ = 'https://github.com/py-notepads/notepads'
+__github__ = 'https://github.com/notepads-py'
+__repo__ = 'https://github.com/notepads-py/notepads'
 __url__ = __github__
