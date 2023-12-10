@@ -1,6 +1,6 @@
 '''
 ```
-notepads: V5.7.1
+notepads: V5.7.2
 ```
 
 ## Installing
@@ -12,12 +12,23 @@ python3 pip install -U notepads
 py -3 -m pip install -U notepads
 ```
 
+### Supports TypeHints
+
 Create runtime only directory
     [1] -> Make folders
     [2] -> Make files
     [3] -> Make notes for code
 
 ========================================
+
+```python
+# View Directory:
+
+notepads.directory
+notepads.dir
+notepads.source
+notepads.src
+```
 
 # Directory Example Layout:
 ```ruby
@@ -29,74 +40,99 @@ Directory["/notepads/"]
 
 ========================================
 
-# Create note:
+
+# Usage  <h6>100ms | (Average)</h6>
 ```python
-notepads.note(name='notename', content='notecontent', author='OPTIONAL_noteauthor')
-```
-# Find note
-```python
-notepads.get_note(name='notename')
+import notepads
 
-# or
+notepads.note \
+    (name="introduction",
 
-notepads.notes()[<index>]
-```
-========================================
+    content="""Create runtime only directory 
+    [1] -> Make folders 
+    [2] -> Make files 
+    [3] -> Make notes for code""",
 
-# Create folder:
-```python
-notepads.folder(name='foldername', version='OPTIONAL_0.0.0', description='OPTIONAL_a test folder', author='OPTIONAL_test author'))
+    author = "'notepads.py' Team")
 
-# name, *, version=None, description=None, author=None
-```
+print(notepads.get_note('introduction').content)
 
-# Find folder:
-```python
-notepads.get(name='foldername')
-```
+"""
+Lets create a file `nps.txt` and a folder `examples` in the directory.
+"""
 
-# Update folder:
-```python
-folder.update(name='newfoldername', version='0.0.1', description='a new test folder', author='test author')
-```
+notepads.folder \
+    (name="examples",
+    description="Examples of using notepads.",
+    version="0.1.0",
+    author="'notepads.py' Team")
 
-# Delete folder:
-```python
-folder.delete()
-```
+notepads.file \
+    (name="nps.txt",
+    description="This is a file.",
+    version="0.1.0",
+    author="'notepads.py' Team")
 
-========================================
+print(notepads.directory) # notepads.dir | notepads.source | notepads.src
 
-# Create file:
-```python
-notepads.file(name='filename', description='OPTIONAL_a test file', author='OPTIONAL_test author', parent='OPTIONAL_folder name')
+"""
+Output:
 
-# name, *, version=None, description=None, author=None, parent: NotepadsFolder=None
-```
+Directory["/notepads/"]
+  🗀  examples
+  🗎  nps.txt
+"""
 
-# Find file:
-```python
-notepads.get(name='filename')
-```
+"""
+Lets add a file `test.py` to the `examples` folder.
+"""
 
-# Update file:
-```python
-file.update(name='newfilename', description='a new test file', author='test author)
-```
+notepads.file \
+    (name="test.py",
+    parent='examples')
 
-# Load file:
-```python
-file.load()
-```
+print(notepads.directory) # notepads.dir | notepads.source | notepads.src
 
-# Write file:
-```python
-file.write(content='newfilecontent')
-```
+"""
+Output:
 
-# Delete file:
-```python
-file.delete()
+Directory["/notepads/"]
+  🗀  examples
+   ↳ 🗎  test.py
+  🗎  nps.txt
+"""
+
+"""
+Now lets write to some files!
+"""
+
+nps_file = notepads.get('nps.txt')
+test_file = notepads.get('examples').get('test.py')
+
+nps_file.write("Hello, World!")
+test_file.write("print('Hello, World!')")
+
+print(nps_file.read())
+print(test_file.read())
+
+"""
+nps.txt:
+
+Hello, World!
+
+test.py:
+print('Hello, World!')
+"""
+
+nps_file.wipe()
+
+print(nps_file.read())
+
+"""
+Output:
+
+
+"""
 ```
 '''
 
@@ -176,11 +212,11 @@ def file(name, *, version=None, description=None, author=None, parent: NotepadsF
                 directory.all[parent.name] = parent
             else:
                 parent = directory.all[parent]
-            
+
     file: NotepadsFile = NotepadsFile(name, version=version, description=description, author=author, parent=parent)
     file.directory = directory
-    
-    directory.files.append((file.name, file))
+
+    if not parent: directory.files.append((file.name, file))
     if parent:
         directory.all[parent.name].files[file.name] = file
     else:
@@ -271,7 +307,7 @@ __all__ = [
     'isascii',
     'istitle',
 ]
-__version__ = '5.7.1'
+__version__ = '5.7.2'
 __author__ = 'notepads'
 __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2023 notepads'
