@@ -38,5 +38,3 @@ class NotepadsNote(object):
             return self
         except:
             return 'Unknown Note'
-
-    
