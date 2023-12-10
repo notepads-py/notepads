@@ -4,9 +4,7 @@ notepads.Source \
     .src='''  (Demo) Using notepads V5.7.5  '''
 
 
-'''
-Creating a file `test.txt`.
-'''
+# Creating a file `test.txt`.
 
 notepads.file \
     (name="test.txt")
@@ -20,9 +18,7 @@ Directory["/notepads/"]
   🗎  test.txt
 '''
 
-'''
-Creating a folder `examples`.
-'''
+#Creating a folder `examples`.
 
 notepads.folder \
     (name="examples")
@@ -37,9 +33,7 @@ Directory["/notepads/"]
   🗎  test.txt
 '''
 
-'''
-Move `test.txt` to `examples`.
-'''
+# Move `test.txt` to `examples`.
 
 notepads.get('test.txt').move('examples')
 
@@ -53,9 +47,7 @@ Directory["/notepads/"]
    ↳ 🗎  test.txt
 '''
 
-'''
-Create a file `main.py`.
-'''
+# Create a file `main.py`.
 
 notepads.file \
     (name="main.py")
@@ -71,9 +63,7 @@ Directory["/notepads/"]
   🗎  main.py
 '''
 
-'''
-Write simple program to file `main.py`
-'''
+# Write simple program to file `main.py`
 
 main_py = notepads.get('main.py')
 
