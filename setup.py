@@ -6,7 +6,7 @@ path_absolute: pathlib.Path = pathlib.Path(__file__).parent.absolute()
 setup(
     name='notepads',
     version='5.7.6',
-    description='',
+    description=' ',
     long_description=pathlib.Path(f"{path_absolute}/README.md").read_text(encoding="utf-8"),
     long_description_content_type='text/markdown',
     url='https://github.com/notepads-py',
