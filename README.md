@@ -8,7 +8,7 @@
 [![Python Versions](https://img.shields.io/badge/python-3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20|%203.12%20-blue)](https://www.python.org/downloads/)
 
 ```
-notepads: V5.7.1
+notepads: V5.7.2
 ```
 
 ## Installing
