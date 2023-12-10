@@ -1,6 +1,6 @@
 '''
 ```
-notepads: V5.7.2
+notepads: V5.7.3
 ```
 
 ## Installing
@@ -65,7 +65,15 @@ notepads.folder \
     (name="examples",
     description="Examples of using notepads.",
     version="0.1.0",
-    author="'notepads.py' Team")
+    author="'notepads.py' Team",
+    some_random_kwarg='hi there!')
+
+#   folder.some_random_kwarg
+#   >>> hi there!
+
+"""
+Any other kwarg you pass in will be saved as a variable for you to access later.
+"""
 
 notepads.file \
     (name="nps.txt",
@@ -307,7 +315,7 @@ __all__ = [
     'isascii',
     'istitle',
 ]
-__version__ = '5.7.2'
+__version__ = '5.7.3'
 __author__ = 'notepads'
 __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2023 notepads'
