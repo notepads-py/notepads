@@ -1,6 +1,6 @@
 '''
 ```
-notepads: V5.7.5
+notepads: V5.7.6
 ```
 
 ## Installing
@@ -187,42 +187,42 @@ from ._core._file import NotepadsFile
 from ._core._folder import NotepadsFolder
 from ._core._note import NotepadsNote, notepad
 
-directory: NotepadsDirectory = NotepadsDirectory()
-dir: NotepadsDirectory = directory
-source: NotepadsDirectory = directory
-src: NotepadsDirectory = directory
+directory:     Directory = NotepadsDirectory()
+dir:           Directory = directory
+source:        Directory = directory
+src:           Directory = directory
 
-def note(name, content, *, author=None):
+def note(name: str, content: str, *, author: str=None, **kwargs) -> Note:
     return NotepadsNote(name, content, author=author)
 
-def notes():
+def notes(*args, **kwargs) -> List[Note]:
     return notepad.notes
 
-def get_note(name):
+def get_note(name: str, *args, **kwargs) -> str | object:
     return notepad.all.get(name)
 
-def files():
+def files(*args, **kwargs) -> List[File]:
     return directory.files
 
-def folders():
+def folders(*args, **kwargs) -> List[Folder]:
     return directory.folders
 
-def all():
+def all(*args, **kwargs) -> Directory:
     return directory.all
 
-def file(name, *, version=None, description=None, author=None, parent: NotepadsFolder=None):
+def file(name: str, *, version: str=None, description: str=None, author: str=None, parent: str=None, **kwargs) -> File:
     if parent:
         if len(directory.folders) > 0:
             if parent not in [folder[0] for folder in directory.folders]:
                 parent: NotepadsFolder = folder(name=parent, version=None, description=None, author=None)
-                parent.directory = directory
+                parent.directory: Directory = directory
                 directory.folders.append((parent.name, parent))
                 directory.all[parent.name] = parent
             else:
-                parent = directory.all[parent]
+                parent: Directory = directory.all[parent]
 
     file: NotepadsFile = NotepadsFile(name, version=version, description=description, author=author, parent=parent)
-    file.directory = directory
+    file.directory: Directory = directory
 
     if not parent: directory.files.append((file.name, file))
     if parent:
@@ -231,102 +231,102 @@ def file(name, *, version=None, description=None, author=None, parent: NotepadsF
         directory.all[file.name] = file
     return file
 
-def folder(name, *, version=None, description=None, author=None):
-    folder: NotepadsFolder = NotepadsFolder(name, version=version, description=description, author=author)
-    folder.directory = directory
+def folder(name: str, *, version: str=None, description: str=None, author: str=None, **kwargs) -> Folder:
+    folder: Folder = NotepadsFolder(name, version=version, description=description, author=author)
+    folder.directory: Directory = directory
     directory.folders.append((folder.name, folder))
     directory.all[folder.name] = folder
     return folder
 
-def get(name):
+def get(name: str, *args, **kwargs) -> Directory:
     return directory.all[name]
 
-__all__ = [
-    'directory',
-    'dir',
-    'source',
-    'src',
-    'note',
-    'notes',
-    'get_note',
-    'files',
-    'folders',
-    'all',
-    'file',
-    'folder',
-    'get',
-    'Directory',
-    'Dir',
-    'Source',
-    'Src',
-    'File',
-    'FileAuthor',
-    'FileVersion',
-    'FileDesc',
-    'FileParent',
-    'FileContent',
-    'Folder',
-    'FolderAuthor',
-    'FolderVersion',
-    'FolderDesc',
-    'FolderFile',
-    'Note',
-    'NoteName',
-    'NoteContent',
-    'NoteAuthor',
-    'Any',
-    'Callable',
-    'Dict',
-    'List',
-    'Optional',
-    'Tuple',
-    'Union',
-    'pickle',
-    'dump',
-    'load',
-    'read',
-    'write',
-    'lines',
-    'words',
-    'chars',
-    'ints',
-    'floats',
-    'join',
-    'split',
-    'replace',
-    'strip',
-    'lstrip',
-    'rstrip',
-    'capitalize',
-    'lower',
-    'upper',
-    'title',
-    'swapcase',
-    'islower',
-    'isupper',
-    'isdigit',
-    'isnumeric',
-    'isdecimal',
-    'isalpha',
-    'isalnum',
-    'isidentifier',
-    'isspace',
-    'isprintable',
-    'isascii',
-    'istitle',
-]
-__version__ = '5.7.5'
-__author__ = 'notepads'
-__license__ = 'MIT'
-__copyright__ = 'Copyright (c) 2023 notepads'
-__credits__ = ['notepads']
-__maintainer__ = 'notepads'
-__email__ = 'notepads.py@gmail.com'
-__status__ = 'Development Status :: 5 - Production/Stable'
-__python_version__ = '3.7'
-__name__ = 'notepads'
-__description__ = 'Create runtime folders, files, and code notes. All stored in notepads environment.'
-__desc__ = __description__
-__github__ = 'https://github.com/notepads-py'
-__repo__ = 'https://github.com/notepads-py/notepads'
-__url__ = __github__
+__all__:            tuple = (
+                             'directory',
+                             'dir',
+                             'source',
+                             'src',
+                             'note',
+                             'notes',
+                             'get_note',
+                             'files',
+                             'folders',
+                             'all',
+                             'file',
+                             'folder',
+                             'get',
+                             'Directory',
+                             'Dir',
+                             'Source',
+                             'Src',
+                             'File',
+                             'FileAuthor',
+                             'FileVersion',
+                             'FileDesc',
+                             'FileParent',
+                             'FileContent',
+                             'Folder',
+                             'FolderAuthor',
+                             'FolderVersion',
+                             'FolderDesc',
+                             'FolderFile',
+                             'Note',
+                             'NoteName',
+                             'NoteContent',
+                             'NoteAuthor',
+                             'Any',
+                             'Callable',
+                             'Dict',
+                             'List',
+                             'Optional',
+                             'Tuple',
+                             'Union',
+                             'pickle',
+                             'dump',
+                             'load',
+                             'read',
+                             'write',
+                             'lines',
+                             'words',
+                             'chars',
+                             'ints',
+                             'floats',
+                             'join',
+                             'split',
+                             'replace',
+                             'strip',
+                             'lstrip',
+                             'rstrip',
+                             'capitalize',
+                             'lower',
+                             'upper',
+                             'title',
+                             'swapcase',
+                             'islower',
+                             'isupper',
+                             'isdigit',
+                             'isnumeric',
+                             'isdecimal',
+                             'isalpha',
+                             'isalnum',
+                             'isidentifier',
+                             'isspace',
+                             'isprintable',
+                             'isascii',
+                             'istitle',
+)
+__version__:        str    = '5.7.6'
+__author__:         str    = 'notepads'
+__license__:        str    = 'MIT'
+__copyright__:      str    = 'Copyright (c) 2023 notepads'
+__credits__:        str    = 'notepads'
+__maintainer__:     str    = 'notepads'
+__email__:          str    = 'notepads.py@gmail.com'
+__status__ :        str    = 'Development Status :: 5 - Production/Stable'
+__python_version__: str    = '3.7'
+__name__:           str    = 'notepads'
+__description__:    str    = 'Create runtime folders, files, and code notes. All stored in notepads environment.'
+__desc__:           str    = __description__
+__github__:         str    = 'https://github.com/notepads-py'
+__repo__:           str    = 'https://github.com/notepads-py/notepads'
+__url__ :           str    = __github__
