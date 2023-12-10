@@ -26,8 +26,11 @@ setup(
         'Programming Language :: Python :: 3.7',
     ],
     keywords='notes, notepad, notepads, np, nps',
-    install_requires=[
-    ],
+    project_urls={
+        'Source Code': 'https://github.com/py-notepads/notepads',
+        'Issues': 'https://github.com/py-notepads/notepads/issues',
+        'Download': 'https://pypi.org/project/notepads/',
+    },
     include_package_data=True,
     packages=find_packages(exclude=['tests', 'tests.*'])
 ),
