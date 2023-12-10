@@ -4,7 +4,7 @@
 
 
 # [notepads - PyPi](https://pypi.org/project/notepads)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/notepads-py/notepads/blob/main/LICENSE)
 [![Python Versions](https://img.shields.io/badge/python-3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20|%203.12%20-blue)](https://www.python.org/downloads/)
 
 ```
