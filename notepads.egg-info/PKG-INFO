@@ -1,11 +1,14 @@
 Metadata-Version: 2.1
 Name: notepads
-Version: 5.7.1
+Version: 5.7.4
 Summary: Create runtime folders, files, and code notes. All stored in notepads environment.
-Home-page: https://github.com/py-notepads
+Home-page: https://github.com/notepads-py
 Author: notepads
 Author-email: notepads.py@gmail.com
 License: MIT
+Project-URL: Source Code, https://github.com/notepads-py/notepads
+Project-URL: Issues, https://github.com/notepads-py/notepads/issues
+Project-URL: Download, https://pypi.org/project/notepads/
 Keywords: notes,notepad,notepads,np,nps
 Classifier: Development Status :: 1 - Planning
 Classifier: Development Status :: 2 - Pre-Alpha
@@ -27,11 +30,11 @@ License-File: AUTHORS
 
 
 # [notepads - PyPi](https://pypi.org/project/notepads)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/notepads-py/notepads/blob/main/LICENSE)
 [![Python Versions](https://img.shields.io/badge/python-3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20|%203.12%20-blue)](https://www.python.org/downloads/)
 
 ```
-notepads: V5.7.1
+notepads: V5.7.4
 ```
 
 ## Installing
@@ -43,12 +46,23 @@ python3 pip install -U notepads
 py -3 -m pip install -U notepads
 ```
 
+### Supports TypeHints
+
 Create runtime only directory
     [1] -> Make folders
     [2] -> Make files
     [3] -> Make notes for code
 
 ========================================
+
+```python
+# View Directory:
+
+notepads.directory
+notepads.dir
+notepads.source
+notepads.src
+```
 
 # Directory Example Layout:
 ```ruby
@@ -60,72 +74,105 @@ Directory["/notepads/"]
 
 ========================================
 
-# Create note:
+
+# Usage  <h6>100ms | (Average)</h6>
 ```python
-notepads.note(name='notename', content='notecontent', author='OPTIONAL_noteauthor')
-```
-# Find note
-```python
-notepads.get_note(name='notename')
+import notepads
 
-# or
+notepads.note \
+    (name="introduction",
+     
+    content="""Create runtime only directory 
+    [1] -> Make folders 
+    [2] -> Make files 
+    [3] -> Make notes for code""",
+     
+    author = "'notepads.py' Team")
 
-notepads.notes()[<index>]
-```
-========================================
+print(notepads.get_note('introduction').content)
 
-# Create folder:
-```python
-notepads.folder(name='foldername', version='OPTIONAL_0.0.0', description='OPTIONAL_a test folder', author='OPTIONAL_test author'))
+"""
+Lets create a file `nps.txt` and a folder `examples` in the directory.
+"""
 
-# name, *, version=None, description=None, author=None
-```
+notepads.folder \
+    (name="examples",
+    description="Examples of using notepads.",
+    version="0.1.0",
+    author="'notepads.py' Team",
+    some_random_kwarg='hi there!')
 
-# Find folder:
-```python
-notepads.get(name='foldername')
-```
+#   folder.some_random_kwarg
+#   >>> hi there!
 
-# Update folder:
-```python
-folder.update(name='newfoldername', version='0.0.1', description='a new test folder', author='test author')
-```
+"""
+Any other kwarg you pass in will be saved as a variable for you to access later.
+"""
 
-# Delete folder:
-```python
-folder.delete()
-```
+notepads.file \
+    (name="nps.txt",
+    description="This is a file.",
+    version="0.1.0",
+    author="'notepads.py' Team")
 
-========================================
+print(notepads.directory) # notepads.dir | notepads.source | notepads.src
 
-# Create file:
-```python
-notepads.file(name='filename', description='OPTIONAL_a test file', author='OPTIONAL_test author', parent='OPTIONAL_folder name')
+"""
+Output:
 
-# name, *, version=None, description=None, author=None, parent: NotepadsFolder=None
-```
+Directory["/notepads/"]
+  🗀  examples
+  🗎  nps.txt
+"""
 
-# Find file:
-```python
-notepads.get(name='filename')
-```
+"""
+Lets add a file `test.py` to the `examples` folder.
+"""
 
-# Update file:
-```python
-file.update(name='newfilename', description='a new test file', author='test author)
-```
+notepads.file \
+    (name="test.py",
+    parent='examples')
 
-# Load file:
-```python
-file.load()
-```
+print(notepads.directory) # notepads.dir | notepads.source | notepads.src
 
-# Write file:
-```python
-file.write(content='newfilecontent')
-```
+"""
+Output:
 
-# Delete file:
-```python
-file.delete()
+Directory["/notepads/"]
+  🗀  examples
+   ↳ 🗎  test.py
+  🗎  nps.txt
+"""
+
+"""
+Now lets write to some files!
+"""
+
+nps_file = notepads.get('nps.txt')
+test_file = notepads.get('examples').get('test.py')
+
+nps_file.write("Hello, World!")
+test_file.write("print('Hello, World!')")
+
+print(nps_file.read())
+print(test_file.read())
+
+"""
+nps.txt:
+
+Hello, World!
+
+test.py:
+print('Hello, World!')
+"""
+
+nps_file.wipe()
+
+print(nps_file.read())
+
+"""
+Output:
+
+
+"""
 ```
