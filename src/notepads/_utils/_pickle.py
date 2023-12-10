@@ -1,8 +1,8 @@
 import pickle
 
-def dump(obj, file, protocol=pickle.HIGHEST_PROTOCOL):
+def dump(file, content, protocol=pickle.HIGHEST_PROTOCOL):
     with open(file, 'wb') as f:
-        pickle.dump(obj, f, protocol=protocol)
+        pickle.dump(content, f, protocol=protocol)
     return file
 
 def load(file):
