@@ -14,7 +14,6 @@ assets/notepads.png
 notepads/__init__.py
 notepads/__main__.py
 notepads/help.py
-notepads/layout.py
 notepads/py.typed
 notepads.egg-info/PKG-INFO
 notepads.egg-info/SOURCES.txt
