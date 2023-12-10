@@ -18,10 +18,11 @@ Directory["/notepads/"]
   🗎  test.txt
 '''
 
-#Creating a folder `examples`.
+# Creating a folder `examples`.
 
 notepads.folder \
-    (name="examples")
+    (name="examples",
+    author="notepads.py Team")
 
 print(notepads.src)
 
