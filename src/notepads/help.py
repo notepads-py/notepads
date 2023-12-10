@@ -1,6 +1,6 @@
 print('''
 ```
-notepads: V5.7.3
+notepads: V5.7.4
 ```
 
 ## Installing
