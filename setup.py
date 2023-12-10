@@ -5,11 +5,11 @@ path_absolute: pathlib.Path = pathlib.Path(__file__).parent.absolute()
 
 setup(
     name='notepads',
-    version='5.7.3',
+    version='5.7.4',
     description='Create runtime folders, files, and code notes. All stored in notepads environment.',
     long_description=pathlib.Path(f"{path_absolute}/README.md").read_text(encoding="utf-8"),
     long_description_content_type='text/markdown',
-    url='https://github.com/py-notepads',
+    url='https://github.com/notepads-py',
     author='notepads',
     author_email='notepads.py@gmail.com',
     license='MIT',
@@ -27,8 +27,8 @@ setup(
     ],
     keywords='notes, notepad, notepads, np, nps',
     project_urls={
-        'Source Code': 'https://github.com/py-notepads/notepads',
-        'Issues': 'https://github.com/py-notepads/notepads/issues',
+        'Source Code': 'https://github.com/notepads-py/notepads',
+        'Issues': 'https://github.com/notepads-py/notepads/issues',
         'Download': 'https://pypi.org/project/notepads/',
     },
     include_package_data=True,
