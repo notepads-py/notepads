@@ -1,6 +1,6 @@
 '''
 ```
-notepads: V5.7.6
+notepads: V5.7.7
 ```
 
 ## Installing
@@ -315,7 +315,7 @@ __all__:            tuple = (
                              'isascii',
                              'istitle',
 )
-__version__:        str    = '5.7.6'
+__version__:        str    = '5.7.7'
 __author__:         str    = 'notepads'
 __license__:        str    = 'MIT'
 __copyright__:      str    = 'Copyright (c) 2023 notepads'
